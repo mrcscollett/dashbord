@@ -1,0 +1,28 @@
+.grafana-dashboard {
+    margin: 20px 0;
+  
+    .dashboard-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px;
+      background-color: #303030;
+      border-radius: 8px;
+      margin-bottom: 20px;
+  
+      .cis-panels {
+        display: flex;
+        justify-content: space-between;
+  
+        > div {
+          flex: 1;
+          text-align: center;
+          margin: 0 8px;
+          background-color: #37474f;
+          padding: 10px;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+  

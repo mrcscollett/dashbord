@@ -1,0 +1,19 @@
+.rss-feed {
+    padding: 16px;
+    background-color: #303030;
+    border-radius: 8px;
+    
+    ul {
+      padding: 0;
+      list-style-type: none;
+  
+      li {
+        padding: 8px 0;
+        a {
+          color: #29b6f6;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  

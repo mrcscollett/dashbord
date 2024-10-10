@@ -1,0 +1,29 @@
+.messages {
+    padding: 16px;
+    background-color: #303030;
+    border-radius: 8px;
+  
+    .message-list {
+      margin-top: 16px;
+      max-height: 200px;
+      overflow-y: auto;
+      padding: 8px;
+      background-color: #424242;
+      border-radius: 4px;
+      
+      p {
+        margin: 8px 0;
+      }
+    }
+  
+    /* Add margin and other styles to the message entry */
+    .message-entry {
+      margin-bottom: 12px;
+      
+      strong {
+        color: #29b6f6;
+      }
+    }
+  }
+  
+  
