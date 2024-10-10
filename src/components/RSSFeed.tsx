@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Typography } from '@mui/material';
+import React from 'react';
+import { Box, Typography, useTheme } from '@mui/material';
 import './RSSFeed.scss';
 
 const RSSFeed: React.FC = () => {
-  const [rssData, setRssData] = useState<any[]>([]);
-
-  useEffect(() => {
-    const mockRSS = [
-      { title: 'Cybersecurity News 1', link: '#' },
-      { title: 'Cybersecurity News 2', link: '#' },
-      { title: 'Cybersecurity News 3', link: '#' },
-    ];
-    setRssData(mockRSS);
-  }, []);
+  const theme = useTheme(); // Get the current theme
+  
+  const mockRSS = [
+    { title: 'Cybersecurity News 1', link: '#' },
+    { title: 'Cybersecurity News 2', link: '#' },
+    { title: 'Cybersecurity News 3', link: '#' },
+  ];
 
   return (
-    <Box className="rss-feed" sx={{ backgroundColor: 'background.paper' }}>
-      <Typography variant="h6" color="textPrimary">Cybersecurity News</Typography>
+    <Box className="rss-feed" sx={{ backgroundColor: theme.palette.background.paper, padding: '16px', borderRadius: '8px' }}>
+      <Typography variant="h6" color={theme.palette.text.primary}>Cybersecurity News</Typography>
       <ul>
-        {rssData.map((item, index) => (
+        {mockRSS.map((item, index) => (
           <li key={index}>
-            <a href={item.link} style={{ color: '#29b6f6' }}>{item.title}</a>
+            <a href={item.link} style={{ color: theme.palette.primary.main }}>{item.title}</a>
           </li>
         ))}
       </ul>
@@ -29,3 +26,4 @@ const RSSFeed: React.FC = () => {
 };
 
 export default RSSFeed;
+
