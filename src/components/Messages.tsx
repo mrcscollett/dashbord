@@ -8,7 +8,7 @@ interface Message {
 }
 
 const Messages: React.FC = () => {
-  // Mock messages with names and content
+  
   const [messages, setMessages] = useState<Message[]>([
     { name: 'John Doe', content: 'This is the first test message.' },
     { name: 'Jane Smith', content: 'Here’s another example message for testing.' },
@@ -31,7 +31,7 @@ const Messages: React.FC = () => {
     <Box className="messages" sx={{ backgroundColor: 'background.paper' }}>
       <Typography variant="h6" color="textPrimary">Messages</Typography>
 
-      {/* Input fields for name and message */}
+      { }
       <TextField
         label="Your Name"
         value={inputName}

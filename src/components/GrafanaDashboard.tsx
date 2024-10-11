@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import './GrafanaDashboard.scss';
 
-// Mock data for line charts
+
 const data = [
   { name: 'Jan', alerts: 40 },
   { name: 'Feb', alerts: 30 },
@@ -17,7 +17,7 @@ const data = [
 const GrafanaDashboard: React.FC = () => {
   return (
     <Box className="grafana-dashboard">
-      {/* Row 1: Wazuh Alerts */}
+      { }
       <Box className="dashboard-row" sx={{ backgroundColor: 'background.paper', padding: '16px', borderRadius: '8px' }}>
         <Typography variant="h6" color="textPrimary">Wazuh Alerts</Typography>
         <Typography color="textSecondary">Number of Alerts: 150</Typography>
@@ -32,7 +32,7 @@ const GrafanaDashboard: React.FC = () => {
         </ResponsiveContainer>
       </Box>
 
-      {/* Row 2: SentinelOne Alerts */}
+      { }
       <Box className="dashboard-row" sx={{ backgroundColor: 'background.paper', padding: '16px', borderRadius: '8px' }}>
         <Typography variant="h6" color="textPrimary">SentinelOne Alerts</Typography>
         <Typography color="textSecondary">Number of Alerts: 85</Typography>
