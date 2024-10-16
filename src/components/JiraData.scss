@@ -1,7 +1,8 @@
 .jira-data {
     padding: 16px;
-    background-color: #303030;
+    background-color: var(--paper-background-color);
     border-radius: 8px;
+    color: var(--text-primary-color);
   
     ul {
       list-style: none;
@@ -10,9 +11,10 @@
       li {
         margin-bottom: 10px;
         strong {
-          color: #29b6f6;
+          color: var(--primary-color);
         }
       }
     }
   }
+  
   

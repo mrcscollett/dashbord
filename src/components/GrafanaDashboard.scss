@@ -6,9 +6,9 @@
       flex-direction: column;
       gap: 12px;
       padding: 16px;
-      background-color: #303030;
+      background-color: var(--card-background-color);
       border-radius: 8px;
-      margin-bottom: 20px;
+      color: var(--text-primary-color);
   
       .cis-panels {
         display: flex;
@@ -18,9 +18,10 @@
           flex: 1;
           text-align: center;
           margin: 0 8px;
-          background-color: #37474f;
+          background-color: var(--paper-background-color);
           padding: 10px;
           border-radius: 5px;
+          color: var(--text-secondary-color);
         }
       }
     }
