@@ -1,6 +1,6 @@
+// src/components/JiraData.tsx
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import './JiraData.scss';
 
 const JiraData: React.FC = () => {
   const mockJiraData = [
@@ -9,12 +9,21 @@ const JiraData: React.FC = () => {
   ];
 
   return (
-    <Box className="jira-data" sx={{ backgroundColor: 'background.paper' }}>
-      <Typography variant="h6" color="textPrimary">Jira Tickets</Typography>
-      <ul>
+    <Box
+      sx={{
+        padding: '16px',
+        backgroundColor: 'background.paper',
+        borderRadius: '8px',
+        color: 'text.primary',
+      }}
+    >
+      <Typography variant="h6">Jira Tickets</Typography>
+      <ul style={{ listStyleType: 'none', padding: 0 }}>
         {mockJiraData.map((item, index) => (
-          <li key={index}>
-            <strong>{item.issue}</strong>: {item.status}
+          <li key={index} style={{ marginBottom: '10px' }}>
+            <Typography variant="body1">
+              <strong style={{ color: 'primary.main' }}>{item.issue}</strong>: {item.status}
+            </Typography>
           </li>
         ))}
       </ul>
@@ -23,3 +32,4 @@ const JiraData: React.FC = () => {
 };
 
 export default JiraData;
+

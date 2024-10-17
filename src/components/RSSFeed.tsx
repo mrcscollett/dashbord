@@ -1,13 +1,12 @@
+// src/components/RSSFeed.tsx
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, CircularProgress, Card, CardContent, CardMedia, Link, useTheme } from '@mui/material';
+import { Box, Typography, CircularProgress, Card, CardContent, CardMedia, Link } from '@mui/material';
 import { rssFeeds$, FeedItem } from '../observables/rssFeedService';
 import { Subscription } from 'rxjs';
-import './RSSFeed.scss';
 
 const RSSFeed: React.FC = () => {
   const [feeds, setFeeds] = useState<{ [key: string]: FeedItem[] }>({});
   const [loading, setLoading] = useState(true);
-  const theme = useTheme();
 
   useEffect(() => {
     const subscription: Subscription = rssFeeds$.subscribe((feedData: any) => {
@@ -22,24 +21,35 @@ const RSSFeed: React.FC = () => {
   }, []);
 
   return (
-    <Box className="rss-feed-container" sx={{ maxHeight: '400px', overflowY: 'auto', padding: '16px', borderRadius: '8px', backgroundColor: 'background.paper' }}>
-      <Typography variant="h6" color="textPrimary">Cybersecurity News</Typography>
+    <Box
+      sx={{
+        maxHeight: '400px',
+        overflowY: 'auto',
+        padding: '16px',
+        borderRadius: '8px',
+        backgroundColor: 'background.paper',
+        color: 'text.primary',
+      }}
+    >
+      <Typography variant="h6">Cybersecurity News</Typography>
 
       {loading ? (
         <CircularProgress />
       ) : (
         Object.entries(feeds).map(([feedName, feedItems]) => (
           <Box key={feedName} sx={{ marginY: 2 }}>
-            <Typography variant="subtitle1" color="textSecondary">{feedName}</Typography>
-            <Box className="feed-items">
+            <Typography variant="subtitle1" color="textSecondary">
+              {feedName}
+            </Typography>
+            <Box>
               {feedItems.map((item, index) => (
                 <Card
                   key={index}
                   sx={{
                     display: 'flex',
                     marginBottom: '16px',
-                    backgroundColor: theme.palette.mode === 'dark' ? '#424242' : '#f5f5f5',
-                    color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                    backgroundColor: 'background.default',
+                    color: 'text.primary',
                   }}
                 >
                   {item.thumbnail && (
@@ -75,6 +85,7 @@ const RSSFeed: React.FC = () => {
 };
 
 export default RSSFeed;
+
 
 
 

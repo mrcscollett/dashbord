@@ -1,6 +1,6 @@
+// src/components/KelaIntel.tsx
 import React from 'react';
-import { Box, Typography } from '@mui/material';
-import './KelaIntel.scss';
+import { Box, Typography, useTheme } from '@mui/material';
 
 const KelaIntel: React.FC = () => {
   const mockIntel = [
@@ -8,13 +8,24 @@ const KelaIntel: React.FC = () => {
     { report: 'Intel Report 2', details: 'Details about Intel 2' },
   ];
 
+  const theme = useTheme();
+
   return (
-    <Box className="kela-intel" sx={{ backgroundColor: 'background.paper' }}>
-      <Typography variant="h6" color="textPrimary">KELA Intel</Typography>
-      <ul>
+    <Box
+      sx={{
+        padding: '16px',
+        backgroundColor: 'background.paper',
+        borderRadius: '8px',
+        color: 'text.primary',
+      }}
+    >
+      <Typography variant="h6">KELA Intel</Typography>
+      <ul style={{ listStyleType: 'none', padding: 0 }}>
         {mockIntel.map((item, index) => (
-          <li key={index}>
-            <strong>{item.report}</strong>: {item.details}
+          <li key={index} style={{ marginBottom: '12px' }}>
+            <Typography variant="body1">
+              <strong style={{ color: theme.palette.primary.main }}>{item.report}</strong>: {item.details}
+            </Typography>
           </li>
         ))}
       </ul>
@@ -23,3 +34,4 @@ const KelaIntel: React.FC = () => {
 };
 
 export default KelaIntel;
+

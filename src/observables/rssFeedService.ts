@@ -1,3 +1,4 @@
+// src/observables/rssFeedService.ts
 import { from, of, timer } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
 import { switchMap, catchError, map, retry, mergeMap } from 'rxjs/operators';
@@ -13,8 +14,7 @@ const rssUrls = {
   "Krebs on Security": 'https://api.rss2json.com/v1/api.json?rss_url=https://krebsonsecurity.com/feed/',
   "Threatpost": 'https://api.rss2json.com/v1/api.json?rss_url=https://threatpost.com/feed/',
   "The Hacker News": 'https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/TheHackersNews',
-  "SecurityWeek": 'https://api.rss2json.com/v1/api.json?rss_url=https://www.securityweek.com/rss',
-  "Dark Reading": 'https://api.rss2json.com/v1/api.json?rss_url=https://www.darkreading.com/rss_simple.asp',
+  "SecurityWeek": 'https://api.rss2json.com/v1/api.json?rss_url=https://www.securityweek.com/rss'
 };
 
 // Fetch a single RSS feed
@@ -36,7 +36,7 @@ const fetchFeed = (feedName: string, url: string) => {
         pubDate: item.pubDate,
       })),
     })),
-    retry(2), // Retry up to 2 times on error
+    retry(2),
     catchError((error) => {
       console.error(`Error fetching ${feedName}:`, error);
       return of({ feedName, items: [] });
@@ -45,15 +45,16 @@ const fetchFeed = (feedName: string, url: string) => {
 };
 
 // Observable that fetches all feeds periodically
-export const rssFeeds$ = timer(0, 60000).pipe( // Emit first value immediately, then every 60 seconds
+export const rssFeeds$ = timer(0, 60000).pipe( // Emit immediately, then every 60 seconds
   mergeMap(() =>
     from(Object.entries(rssUrls)).pipe(
       mergeMap(([feedName, url]) => fetchFeed(feedName, url)),
-      map((feed) => feed), // Pass the feed data along
+      map((feed) => feed),
       catchError((error) => {
         console.error('Error fetching feeds:', error);
-        return of([]); // Return empty array on error
+        return of([]);
       })
     )
   )
 );
+

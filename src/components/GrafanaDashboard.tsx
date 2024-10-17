@@ -1,8 +1,15 @@
+// src/components/GrafanaDashboard.tsx
 import React from 'react';
-import { Box, Typography } from '@mui/material';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import './GrafanaDashboard.scss';
-
+import { Box, Typography, useTheme } from '@mui/material';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts';
 
 const data = [
   { name: 'Jan', alerts: 40 },
@@ -15,45 +22,100 @@ const data = [
 ];
 
 const GrafanaDashboard: React.FC = () => {
+  const theme = useTheme();
+
   return (
-    <Box className="grafana-dashboard">
-      { }
-      <Box className="dashboard-row" sx={{ backgroundColor: 'background.paper', padding: '16px', borderRadius: '8px' }}>
-        <Typography variant="h6" color="textPrimary">Wazuh Alerts</Typography>
+    <Box>
+      {/* Wazuh Alerts */}
+      <Box
+        sx={{
+          backgroundColor: 'background.paper',
+          padding: '16px',
+          borderRadius: '8px',
+          marginBottom: '20px',
+        }}
+      >
+        <Typography variant="h6">Wazuh Alerts</Typography>
         <Typography color="textSecondary">Number of Alerts: 150</Typography>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
+            <CartesianGrid strokeDasharray="3 3" stroke={theme.palette.divider} />
+            <XAxis dataKey="name" stroke={theme.palette.text.primary} />
+            <YAxis stroke={theme.palette.text.primary} />
             <Tooltip />
-            <Line type="monotone" dataKey="alerts" stroke="#8884d8" strokeWidth={2} />
+            <Line type="monotone" dataKey="alerts" stroke={theme.palette.primary.main} strokeWidth={2} />
           </LineChart>
         </ResponsiveContainer>
       </Box>
 
-      { }
-      <Box className="dashboard-row" sx={{ backgroundColor: 'background.paper', padding: '16px', borderRadius: '8px' }}>
-        <Typography variant="h6" color="textPrimary">SentinelOne Alerts</Typography>
+      {/* SentinelOne Alerts */}
+      <Box
+        sx={{
+          backgroundColor: 'background.paper',
+          padding: '16px',
+          borderRadius: '8px',
+          marginBottom: '20px',
+        }}
+      >
+        <Typography variant="h6">SentinelOne Alerts</Typography>
         <Typography color="textSecondary">Number of Alerts: 85</Typography>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
+            <CartesianGrid strokeDasharray="3 3" stroke={theme.palette.divider} />
+            <XAxis dataKey="name" stroke={theme.palette.text.primary} />
+            <YAxis stroke={theme.palette.text.primary} />
             <Tooltip />
-            <Line type="monotone" dataKey="alerts" stroke="#82ca9d" strokeWidth={2} />
+            <Line type="monotone" dataKey="alerts" stroke={theme.palette.secondary.main} strokeWidth={2} />
           </LineChart>
         </ResponsiveContainer>
       </Box>
 
-      {/* Row 3: CIS Benchmark Scores */}
-      <Box className="dashboard-row" sx={{ backgroundColor: 'background.paper', padding: '16px', borderRadius: '8px' }}>
-        <Typography variant="h6" color="textPrimary">CIS Benchmark Scores</Typography>
-        <Box className="cis-panels" sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Box sx={{ backgroundColor: '#37474f', padding: '8px', borderRadius: '5px' }}>[Windows: 90%]</Box>
-          <Box sx={{ backgroundColor: '#37474f', padding: '8px', borderRadius: '5px' }}>[Linux: 85%]</Box>
-          <Box sx={{ backgroundColor: '#37474f', padding: '8px', borderRadius: '5px' }}>[macOS: 80%]</Box>
+      {/* CIS Benchmark Scores */}
+      <Box
+        sx={{
+          backgroundColor: 'background.paper',
+          padding: '16px',
+          borderRadius: '8px',
+        }}
+      >
+        <Typography variant="h6">CIS Benchmark Scores</Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px' }}>
+          <Box
+            sx={{
+              flex: 1,
+              textAlign: 'center',
+              margin: '0 8px',
+              backgroundColor: 'background.default',
+              padding: '10px',
+              borderRadius: '5px',
+            }}
+          >
+            Windows: 90%
+          </Box>
+          <Box
+            sx={{
+              flex: 1,
+              textAlign: 'center',
+              margin: '0 8px',
+              backgroundColor: 'background.default',
+              padding: '10px',
+              borderRadius: '5px',
+            }}
+          >
+            Linux: 85%
+          </Box>
+          <Box
+            sx={{
+              flex: 1,
+              textAlign: 'center',
+              margin: '0 8px',
+              backgroundColor: 'background.default',
+              padding: '10px',
+              borderRadius: '5px',
+            }}
+          >
+            macOS: 80%
+          </Box>
         </Box>
       </Box>
     </Box>
@@ -61,3 +123,4 @@ const GrafanaDashboard: React.FC = () => {
 };
 
 export default GrafanaDashboard;
+
