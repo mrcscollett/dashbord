@@ -1,21 +1,19 @@
-// index.tsx
+// src/index.tsx
+
 import React from 'react';
-import ReactDOM from 'react-dom/client'; // Note the '/client' import
+import ReactDOM from 'react-dom';
 import App from './App';
+import { ClientProvider } from './contexts/ClientContexts';
+//import './index.scss'; // Optional: Global styles if any
 
-const container = document.getElementById('root');
-
-if (container) {
-  // Create a root.
-  const root = ReactDOM.createRoot(container);
-
-  // Initial render.
-  root.render(
-    <React.StrictMode>
+ReactDOM.render(
+  <React.StrictMode>
+    <ClientProvider>
       <App />
-    </React.StrictMode>
-  );
-} else {
-  console.error("Root container missing in index.html");
-}
+    </ClientProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+
 
